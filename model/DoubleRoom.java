@@ -1,23 +1,36 @@
 package hotelmanagement.model;
 
-public class DoubleRoom extends AbstractRoom {
-    private final RoomType roomType;
-    private Customer secondCustomer;
+import java.io.Serializable;
 
-    public DoubleRoom(RoomType roomType) {
-        this.roomType = roomType;
-    }
+public class DoubleRoom extends AbstractRoom implements Serializable {
+    private double rate;
 
-    public void setSecondCustomer(Customer customer) {
-        this.secondCustomer = customer;
-    }
-
-    public Customer getSecondCustomer() {
-        return secondCustomer;
+    public DoubleRoom(int roomNumber, double rate) {
+        super(roomNumber);
+        this.rate = rate;
     }
 
     @Override
-    public RoomType getRoomType() {
-        return roomType;
+    public double getRate() {
+        return rate;
+    }
+
+    @Override
+    public void checkIn(Customer... customers) {
+        if (customers.length != 2) {
+            throw new IllegalArgumentException("Double Room hanya untuk 2 orang");
+        }
+        for (Customer customer : customers) {
+            if (customer == null) {
+                throw new IllegalArgumentException("Data pelanggan tidak boleh kosong.");
+            }
+            this.customers.add(customer);
+        }
+        this.available = false;
+    }
+
+    @Override
+    public String toString() {
+        return "DoubleRoom [roomNumber=" + roomNumber + ", rate=" + rate + ", available=" + available + ", customers=" + customers + "]";
     }
 }
