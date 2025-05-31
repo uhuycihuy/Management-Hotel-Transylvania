@@ -1,23 +1,23 @@
-import java.io.Serializable;
-import java.util.ArrayList;
+package hotelmanagement.model;
 
-public class Doubleroom extends Singleroom implements Serializable {
-    String name2;
-    String contact2;
-    String gender2;
+public class DoubleRoom extends AbstractRoom {
+    private final RoomType roomType;
+    private Customer secondCustomer;
 
-    public Doubleroom() {
-        this.name = "";
-        this.name2 = "";
+    public DoubleRoom(RoomType roomType) {
+        this.roomType = roomType;
     }
 
-    public Doubleroom(String name, String contact, String gender, String name2, String contact2, String gender2) {
-        this.name = name;
-        this.contact = contact;
-        this.gender = gender;
-        this.name2 = name2;
-        this.contact2 = contact2;
-        this.gender2 = gender2;
+    public void setSecondCustomer(Customer customer) {
+        this.secondCustomer = customer;
+    }
+
+    public Customer getSecondCustomer() {
+        return secondCustomer;
+    }
+
+    @Override
+    public RoomType getRoomType() {
+        return roomType;
     }
 }
-
