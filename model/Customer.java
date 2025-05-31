@@ -32,7 +32,7 @@ public class Customer implements Serializable {
     
     public void setName(String name) {
         if(name == null || name.trim().isEmpty()) {
-            throw new IllegalArgumentException("Name cannot be empty");
+            throw new IllegalArgumentException("Nama Tidak Boleh Kosong!!");
         }
         this.name = name;
     }
@@ -43,7 +43,7 @@ public class Customer implements Serializable {
     
     public void setContactNumber(String contactNumber) {
         if(!contactNumber.matches("\\d{10,15}")) {
-            throw new IllegalArgumentException("Invalid contact number format");
+            throw new IllegalArgumentException("Format Nomor Telp Tidak Valid");
         }
         this.contactNumber = contactNumber;
     }
